@@ -54,6 +54,12 @@ p {
 a {
   color: inherit;
   text-decoration: none;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+button {
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 ul {
   margin: 0;
@@ -108,6 +114,17 @@ nav {
 
   display: flex;
 }
+.site-nav .current:after {
+  bottom: 0;
+
+  content: '';
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  border-radius: 2px;
+  background-color: var(--accent-color);
+}
 .site-nav > li {
   margin-left: 50px;
 }
@@ -119,17 +136,15 @@ nav {
   padding: 32px 0;
 
   display: block;
+  position: relative;
   color: var(--primary-title-text-color);
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.02em;
-  border-bottom: solid;
-  border-color: transparent;
 }
 .site-nav a:hover,
 .site-nav a:focus {
   color: var(--accent-color);
-  border-color: var(--accent-color);
 }
 /* Mail and tel header */
 .tel {
@@ -242,20 +257,31 @@ nav {
 .we-can .items {
   display: flex;
 }
+.we-can .item {
+  position: relative;
+}
 .we-can .item:not(:first-child) {
   margin-left: 30px;
 }
 .we-can h2 {
   margin-bottom: 50px;
 }
-.we-can p {
-  display: block;
+.we-can .background {
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70px;
   background-color: rgba(47, 48, 58, 0.8);
-  color: var(--secondary-color);
+}
+.we-can .caption {
   font-weight: 700;
   font-size: 14px;
-  text-align: center;
   text-transform: uppercase;
+  color: var(--secondary-color);
 }
 /* Our team */
 .team {
@@ -365,7 +391,6 @@ nav {
   background-color: var(--grey-color);
   color: var(--primary-title-text-color);
   font-family: Roboto;
-  font-style: 400;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.63;
@@ -392,7 +417,8 @@ nav {
 .works .item:not(:nth-child(-n + 3)) {
   margin-top: 30px;
 }
-.works .item:hover {
+.works .item:hover,
+.works .item:focus {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }
@@ -415,11 +441,26 @@ nav {
   font-size: 16px;
   line-height: 1.9;
 }
-.portfolio-project-description {
-  display: none;
-  font-size: 18px;
-  line-height: 1.55;
+.works .item {
+  position: relative;
 }
+.works .item-description-scene {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.works .item-description {
+  padding: 63px 24px;
+
+  background-color: rgba(33, 150, 243, 0.9);
+}
+.item-description p {
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--secondary-color);
+}
+
 /* Footer */
 footer {
   background-color: #2f303a;
