@@ -93,6 +93,9 @@ header > .container {
   display: flex;
   align-items: center;
 }
+header.border-bottom {
+  border-bottom: 1px solid #ececec;
+}
 /* Logo */
 .logo {
   color: var(--black-color);
@@ -254,6 +257,9 @@ nav {
   line-height: 1.7;
 }
 /* What we can */
+.we-can {
+  padding-top: 0;
+}
 .we-can .items {
   display: flex;
 }
