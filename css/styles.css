@@ -23,6 +23,7 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+  outline-color: var(--accent-color);
 }
 body {
   color: var(--primary-text-color);
@@ -61,7 +62,11 @@ button {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-input:not([type='radiobatton checkbox']) {
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+textarea {
+  display: block;
   padding: 12px 16px;
 
   border: 1px solid rgba(33, 33, 33, 0.2);
@@ -70,7 +75,10 @@ input:not([type='radiobatton checkbox']) {
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.01em;
+  min-width: 448px;
+  resize: none;
 }
+
 ul {
   margin: 0;
   padding: 0;
@@ -160,24 +168,24 @@ nav {
   color: var(--accent-color);
 }
 /* Mail and tel header */
-.tel {
+header .tel {
   margin-left: 30px;
 
   display: flex;
   align-items: center;
 }
-.tel > .icon {
+header .tel > .icon {
   margin-right: 10px;
 
   fill: currentColor;
 }
-.mail {
+header .mail {
   margin-left: auto;
 
   display: flex;
   align-items: center;
 }
-.mail > .icon {
+header .mail > .icon {
   margin-right: 10px;
 
   fill: currentColor;
@@ -608,6 +616,7 @@ footer {
   transform: translate(-50%, -50%) scale(1.1);
 }
 .modal {
+  padding: 40px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -638,6 +647,101 @@ footer {
   position: absolute;
   top: 50%;
   left: 50%;
-
   transform: translate(-50%, -50%);
+}
+.modal-label {
+  margin-bottom: 12px;
+
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+.recall-form label {
+  display: block;
+  position: relative;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.01em;
+}
+.recall-form svg {
+  position: absolute;
+  bottom: 11px;
+  left: 12px;
+}
+.recall-form input {
+  padding-left: 42px;
+}
+.recall-form input:focus,
+.recall-form textarea:focus,
+.recall-form input:focus + svg {
+  outline-color: transparent;
+  fill: var(--accent-color);
+  border-color: var(--accent-color);
+}
+.recall-form .agreements {
+  padding-left: 35px;
+  display: flex;
+  align-items: center;
+}
+.recall-form .check-input {
+  position: absolute;
+  appearance: none;
+}
+.check-input:checked + .checkbox {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+.check-input:checked + .checkbox > .checkbox-svg {
+  fill: var(--secondary-color);
+}
+.agreements .checkbox {
+  position: absolute;
+  border: 2px solid var(--primary-title-text-color);
+  border-radius: 2px;
+  width: 15px;
+  height: 15px;
+  left: 14px;
+}
+.agreements .checkbox-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: transparent;
+}
+
+.recall-form .agreements a {
+  text-decoration: underline;
+  color: var(--accent-color);
+}
+.recall-form .name,
+.recall-form .tel,
+.recall-form .mail {
+  margin-bottom: 10px;
+}
+.recall-form .comment {
+  margin-bottom: 20px;
+}
+.agreements {
+  margin-bottom: 30px;
+}
+.recall-form .send-button {
+  padding: 10px 55px;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+  font-size: 16px;
+  line-height: 30px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+.recall-form .send-button:hover {
+  cursor: pointer;
 }
